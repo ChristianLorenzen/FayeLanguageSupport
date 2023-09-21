@@ -1,6 +1,8 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Faye",
+	"foldingStartMarker": "\\{\\s*$",
+	"foldingStopMarker": "\\^\\s*\\}",
 	"patterns": [
 		{
 			"include": "#comments"
@@ -34,6 +36,50 @@
 		}
 	],
 	"repository": {
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign",
+					"match": "#.*"
+				},
+				{
+					"name": "comment.block",
+					"begin": "/\\*",
+					"captures": {
+						"0": {
+							"name": "puncuation.definition.comment.faye"
+						}
+					},
+					"patterns": [
+						{
+							"name": "comment.block.documentation.faye",
+							"match": "documentation"
+						}
+					],
+					"end": "\\*/"
+				}
+			]
+		},
+		"constant": {
+			"patterns": [
+				{
+					"name": "constant.language.faye",
+					"match": "\\b(true|false|null)\\b"
+				},
+				{
+					"name": "constant.numeric.faye",
+					"match": "[0-9]+"
+				},
+				{
+					"name": "constant.character.faye",
+					"match": "."
+				},
+				{
+					"name": "constant.other",
+					"match": "/[0-9a-f]+/i"
+				}
+			]
+		},
 		"control-statements": {
 			"patterns": [
 				{
@@ -67,7 +113,7 @@
 					"match": "\\b(printf|length|toupper|tolower)\\b"
 				},
 				{
-					"name": "entity.name.type.faye",
+					"name": "storage.type",
 					"match": "\\b(string|int|bool|float|var)\\b"
 				}
 			]
@@ -101,11 +147,24 @@
 							"name": "puncuation.definition.comment.faye"
 						}
 					},
+					"patterns": [
+						{
+							"name": "keyword.todo.faye",
+							"match": "TODO"
+						}
+					],
 					"end": "\\*/"
 				},
 				{
 					"name": "comment.line",
-					"match": "#.*"
+					"begin": "#",
+					"end": "\\n",
+					"patterns": [
+						{
+							"name": "keyword.todo.faye",
+							"match": "TODO"
+						}
+					]
 				}
 			]
 		},
