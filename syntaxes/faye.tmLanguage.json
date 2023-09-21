@@ -1,0 +1,122 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Faye",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#reserved-words"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#control-statements"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#expression"
+		},
+		{
+			"include": "#operators"
+		}
+	],
+	"repository": {
+		"control-statements": {
+			"patterns": [
+				{
+					"name": "keyword.control.faye",
+					"match": "\\b(function|if|while|switch|case|break|for|return)\\b"
+				}
+			]
+		},
+		"functions": {
+			"patterns": [
+				{
+					"captures": {
+						"1": {
+							"name": "entity.name.function.faye"
+						}
+					},
+					"name": "puncuation.definition.paramters.faye",
+					"match": "\\b(\\w+)(?:\\s+([-a-zA-Z0-9_]+))?\\s*(\\()",
+					"patterns": [
+						{
+							"include": "#expression"
+						}
+					]
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "entity.name.method.faye",
+					"match": "\\b(printf|length|toupper|tolower)\\b"
+				},
+				{
+					"name": "entity.name.type.faye",
+					"match": "\\b(string|int|bool|float|var)\\b"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.faye",
+					"match": "[0-9]+"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.faye",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.faye",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.faye",
+					"begin": "/\\*",
+					"captures": {
+						"0": {
+							"name": "puncuation.definition.comment.faye"
+						}
+					},
+					"end": "\\*/"
+				},
+				{
+					"name": "comment.line",
+					"match": "#.*"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"match": "--",
+					"name": "keyword.operator.decrement.faye"
+				}
+			]
+		}
+	},
+	"scopeName": "source.faye"
+}
