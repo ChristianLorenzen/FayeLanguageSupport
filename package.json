@@ -1,7 +1,7 @@
 {
   "name": "faye",
   "displayName": "FAYE",
-  "description": "Faye Programming Language",
+  "description": "Faye",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.82.0"
@@ -10,16 +10,27 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "faye",
-      "aliases": ["Faye", "faye"],
-      "extensions": [".faye"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "faye",
-      "scopeName": "source.faye",
-      "path": "./syntaxes/faye.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "faye",
+        "aliases": [
+          "Faye",
+          "faye"
+        ],
+        "extensions": [
+          ".faye",
+          ".fy",
+          ".fay"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "faye",
+        "scopeName": "source.faye",
+        "path": "./syntaxes/faye.tmLanguage.json"
+      }
+    ]
   }
 }
